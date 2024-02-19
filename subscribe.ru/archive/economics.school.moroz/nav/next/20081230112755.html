@@ -1,0 +1,1340 @@
+<!--cat.desc.abt.-->
+    
+                                                    
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru">
+<head>
+
+<link rel="stylesheet" type="text/css" href="/css/Ain1.css" />
+
+<!--[if IE]><link rel="stylesheet" href="/static/css/screen.ie.css" type="text/css" media="screen"/><![endif]-->
+<!--[if lte IE 6]><link rel="stylesheet" href="/static/css/screen.ie6.css" type="text/css" media="screen"/><![endif]-->
+
+
+<link rel="Shortcut Icon" type="image/x-icon" href="/skin/favicon.ico" />
+
+<meta name="google-site-verification" content="cUMhGZ4qV9qQk-a9x0sLNHvYNpxqNm6KImkmxPWp6AM" />
+
+<meta name="Robots" content="index, follow">
+
+<script type="text/javascript" src="/js/Ain1.js"></script>
+<script type="text/javascript">var subscriberu_anchor = {
+  'subscriberu_subscribe': { 'sub' : '<span class="unicsub_text">Я&nbsp;подписан</span>', 'unsub' : '<span class="unicsub_text">Подписаться</span>', 'subhover' : '<span class="unicsub_text">Отписаться</span>'},
+  'subscriberu_love': {'love' : 'В&nbsp;избранном', 'unlove' : 'В&nbsp;избранное', 'lovehover' : 'Из&nbsp;избранного', 'friend' : 'Мой друг', 'friendhover' : 'Из&nbsp;друзей', 'nofriend' : 'В&nbsp;друзья'}  
+};
+
+var apimsg = {
+'error/api/unkact' : 'неизвестный вызов API', 
+'error/api/wpv' : 'неверные параметры вызова API', 
+'error/author/notexists' : 'автор не существует', 
+'error/issue/notexists' : 'выпуск не существует', 
+'error/list/notexists' : 'рассылка не существует',
+'error/member/notexists' : 'подписчик не существует', 
+'error/member/exists' : 'подписчик существует', 
+'error/anketa/badsocial' : 'неверная строка анекеты social', 
+'error/anketa/badoptin' : 'неверная строка aнкеаты optin', 
+'error/anketa/notall' : 'не заполнены все обязательны поля',
+'error/anketa/noyyyy' : 'не указан год рождения', 
+'error/password/badchar' : 'недопустимый символ в пароле', 
+'error/password/wrong' : 'Вы ввели неверный пароль', 
+'error/password/denied' : 'Исчерпан лимит неудачных попыток авторизации. Сервис будет доступен через час',
+'error/email/badchar' : 'недопустимый символ в адресе',
+'error/email/dogdot' : 'недопустимое сочетание @. в адресе', 
+'error/email/doghypen' : 'недопустимое сочетание @- в адресе', 
+'error/email/dotatend' : 'точка на конце адреса не допустима', 
+'error/email/dotdog' : 'недопустимое сочетание .@ в адресе', 
+'error/email/dotdot' : 'недопустимое сочетание .. в имени хоста в адресе',
+'error/email/empty' : 'адрес пуст', 
+'error/email/empty2' : 'адрес пуст',
+'error/email/longdomain' : 'слишком длинное имя хоста в адресе', 
+'error/email/multydog' : 'несколько символов @ в адресе', 
+'error/email/nodog' : 'адрес без символа @', 
+'error/email/nohost' : 'не указано имя хоста в адресе', 
+'error/email/nouser' : 'не указано имя ящика в адресе',
+'error/email/singleparthost' : 'в адресе имя хоста без точек', 
+'error/email/toolong' : 'слишком длинный адрес', 
+'error/email/wrongroot' : 'неверный домен верхнего уровня в адресе', 
+'error/email/longmbox' : 'слишком длинное имя ящика в адресе', 
+'error/email/waitstoplist' : 'адрес ожидает внесения в стоп-лист',
+'error/email/waitunstoplist' : 'адрес ожидает удаления из стоп-листа', 
+'error/email/instoplist' : 'адрес в стоп-листе', 
+'error/email/exists' : 'адрес уже зарегистрирован', 
+'error/email/notexists' : 'адрес не зарегистрирован', 
+'error/member/inasl' : 'в стоп-листе у автора', 
+'error/group/unkorclosed' : 'неизвестная рассылка или она закрыта', 
+'member/quick/closed' : 'рассылка закрыта', 
+'member/quick/nothing' : 'не указана рассылка для подписки', 
+'member/quick/already' : 'этот адрес уже подписан на эту рассылку',
+'member/confirm/notneed' : 'Адрес уже подтвержден. Закройте, пожалуйста, это окошко.',
+'member/confirm/wrong passwd' : 'ввели пароль вместо кода',
+'member/confirm/wrong badcookie' : 'неверный код',
+'member/confirm/wait.html' : 'Сейчас вы будете перенаправлены на следующую страницу.<BR/>Если этого не произошло, перейдите по <a href=/member/join/anketa/target>ссылке</a>',
+'error/confirm/terms_and_conditions' : 'подтвердите согласие с условиями пользования',
+'error/confirm/personal_data' : 'подтвердите согласие на обработку персональных данных',
+'info/done' : 'код выслан повторно'
+}
+
+var subscriberu_period = {'day' : 'день', 'month' : 'месяц', 'year' : 'год'};
+
+var uimsg = {   'unblock' : 'Кликните для разблокировки', 
+                 'recall' : 'Пароль отправлен на указанный адрес',
+	      'sub_inasl' : 'подписчик в стоп-листе автора',
+	         'sub_ms' : 'модерируемая подписка, автору послан запрос',
+	        'sub_unk' : 'рассылка закрыта или код рассылки не опознан',
+	     'endsession' : 'Текущая сессия закончилась. Для продолжения работы необходимо пройти авторизацию',
+	       'maximize' : 'Развернуть',
+	    	    'all' : 'всего',
+	    	   'week' : 'неделя',		    
+	      'deletemsg' : 'Удалить сообщение',
+	     'msgdeleted' : 'Сообщение удалено',
+	         'cancel' : 'отменить',
+                'diffpwd' : 'Пароли не совпадают',
+	       'quickadd' : 'Адрес XXX уже зарегистрирован, и для подписки вам необходимо указать пароль',   
+         'congradulation' : '<span style="color:green">Адрес успешно зарегистрирован и подписка успешно произведена.</span><br/><br/>Для предотвращения несанкционированых подписок Вам отправлен запрос на подтверждение регистрации.',
+                'confirm' : 'На указанный Вами адрес отправлено специальное письмо со ссылкой для подписки без ввода пароля.',
+	      'maybebest' : '<br/>Может быть, лучше <a href="" class="linkconfirm">прислать специальное письмо</a> со ссылкой для подписки без ввода пароля?',		
+        'groupmemberonly' : '<b>Материалы группы доступны только ее участникам.<br/><br/>Чтобы вступить в группу, войдите на сайт <a href="https://subscribe.ru/member/join" id="ajaxreg" style="cursor: pointer;">или зарегистрируйтесь</a></b><br/><br/><i>Уже участник? Авторизуйтесь, пожалуйста.</i>',
+   'groupmemberonlyshort' : '<b>Материалы группы доступны только ее участникам</b>',
+	       'putemail' : 'введите ваш адрес email',
+	   'sendmeletter' : 'Я не хочу вспоминать пароль, <a href="" class="linkconfirm">пришлите мне письмо со ссылкой для подписки</a>',
+         'archsearchtext' : 'Поиск по архиву этой рассылки',
+             'forcomment' : 'Комментарии могут оставлять только зарегистрированные пользователи. Пожалуйста, авторизуйтесь или зарегистрируйтесь.',
+	   'pleaseselect' : 'пожалуйста, выберите',
+	            'cat' : 'кошка',
+	       'emailcpt' : 'Ваш email-адрес для подписки',
+	      'openidcpt' : 'Ваш openid для подписки',
+	      'semailcpt' : 'E-mail:',
+	     'sopenidcpt' : 'Openid:',
+	        'welcome' : '<p>Добро пожаловать на информационный канал Subscribe.Ru!<p><b>Ваша подписка оформлена, но Ваша регистрация ещё не активирована</b> <p>Вам выслано письмо о том, как подтвердить регистрацию. <p>Обязательно подтвердите регистрацию, иначе Вы не сможете получать рассылки по почте. <p>Вы автоматически подписаны на &laquo;Новости Subscribe.Ru&raquo;, которые будут сообщать вам о новых рассылках (конечно, от этой рассылки можно отписаться). <p>Заполните, пожалуйста, анкету. Это поможет сделать сайт лучше, а Вам - принять участие в розыгрыше замечательных призов от нас и наших партнеров.',
+      'alreadysubscribed' : '<p>Вы уже являетесь подписчиком Информационного Канала Subscribe.Ru и уже подписаны на выбранные рассылки. <p>Вы можете зайти в <a href="/member/issue">управление подпиской</a> и убедиться в этом.',
+                'loading' : 'страница загружается...',
+    	    'confirmcode' : 'На указанный вами адрес отправлено письмо с инструкциями и кодом подтверждения',
+	        'vkerror' : 'Произошла ошибка, попробуйте другие способы авторизации',
+	       'mruerror' : 'Произошла ошибка, попробуйте другие способы авторизации',
+        	   'vkok' : 'Авторизация в vkontakte.ru прошла успешно, но она не связана ни с каким email-ом на нашем сайте. Привязка email необходима для подписки, поэтому укажите email.',
+        	  'mruok' : 'Авторизация в Mail.Ru прошла успешно, но она не связана ни с каким email-ом на нашем сайте. Привязка email необходима для подписки, поэтому укажите email.',
+		    'httperr' : 'При отправке запроса произошла ошибка',
+            'no data' : 'нет данных',
+    'doyouwantdeletetheme' : 'Вы действительно хотите удалить эту тему?',
+    'doyouwantdeletecomment' : 'Вы действительно хотите удалить этот комментарий?',
+    'deletecommentbanneduser' : 'Вы действительно хотите удалить этот комментарий и забанить пользователя?',
+    'deleteallusercomments' : 'Вы действительно хотите удалить все комментарии пользователя?',
+    'banneduser' : 'Вы действительно хотите забанить пользователя?',
+    'unbanneduser' : 'Вы действительно хотите разбанить пользователя?',
+    'recoverdeletedcomment' : 'Восстановить удаленный комментарий?'
+	  };
+	  
+var subscriberu_month = {
+ 'genitivus' : ['', 'января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'],
+ 'nominativus' : ['', 'январь', 'февраль', 'март', 'апрель', 'май', 'июнь', 'июль', 'август', 'сентябрь', 'октябрь', 'ноябрь', 'декабрь'],
+ 'rome' : ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII']
+}
+
+
+var subscriberu_subscriber = ['подписчик', 'подписчика', 'подписчиков'];
+var subscriberu_subscription = ['подписка', 'подписки', 'подписок'];
+var subscriberu_member = ['участник', 'участника', 'участников'];
+var subscriberu_view = ['просмотр', 'просмотра', 'просотров'];
+var subscriberu_topic = ['тема', 'темы', 'тем'];
+var subscriberu_comment = ['комментарий', 'комментария', 'комментариев'];
+var subscriberu_rate = ['голос', 'голоса', 'голосов'];
+var subscriberu_ratepos = ['положительный голос', 'положительных голоса', 'положительных голосов'];
+var subscriberu_rateneg = ['отрицательный голос', 'отрицательных голоса', 'отрицательных голосов'];
+
+
+
+var subscriberu_popup_cpt = {
+  'reg'  : '<b>Быстрая регистрация <a href="https://subscribe.ru/member" id ="ajaxlogin" style="cursor:pointer;">или войти</a></b>', 
+  'login' : '<b>Вход на сайт <a href="https://subscribe.ru/member/join" id ="ajaxreg" style="cursor:pointer;">или регистрация</a></b>',
+  'email' : '<b>Быстрая подписка</b>'
+}
+
+var subscriberu_but_cpt = {
+ 'enter' : 'Войти',
+ 'subscribe' : 'Подписаться',
+ 'joingroup' : 'Вступить в группу',
+ 'ok' : 'ok',
+ 'deletetheme' : 'Удалить тему',
+ 'deletecomm' : 'Удалить комментарий',
+ 'deletecomments' : 'Удалить все комментарии',
+ 'recovercomm' : 'Восстановить комментарий',
+ 'deleteandbanned' : 'Удалить и забанить',
+ 'banneduser' : 'Забанить',
+ 'unbanneduser' : 'Разбанить'
+}
+
+var blog_error_code = 	{
+			'wrong_captha':'Вы ввели неправильный код. Попробуйте еще раз, пожалуйста.',
+			'no_confirm_user':'Вы не можете оставлять комментарии, потому что ваша регистрация ещё не подтверждена.<br /><a href="/member/confirm" target="_blank">Подтвердите регистрацию</a>'
+			};
+
+var blog_msg_code =  {    
+            'comment_deleted' : 'комментарий удален',
+            'cancel' : 'Отменить',
+            'delete' : 'Удалить',
+            'nick_free' : 'Ник свободен',
+            'nick_used' : 'Ник занят'
+            };
+
+
+var subscriberu_country_name = ['РОССИЯ / ЦЕНТРАЛЬНЫЙ ФЕДЕРАЛЬНЫЙ ОКРУГ:', 'Москва', 'Московская область', 'Тульская область', 'Тверская область', 'Калужская область', 'Ярославская область', 'Рязанская область', 'Ивановская область', 'Воронежская область', 'Белгородская область', 'Костромская область', 'Смоленская область', 'Брянская область', 'Курская область', 'Тамбовская область', 'Владимирская область', 'Липецкая область', 'Орловская область', 'РОССИЯ / СЕВЕРО-ЗАПАДНЫЙ ФЕДЕРАЛЬНЫЙ ОКРУГ:', 'Санкт-Петербург', 'Ленинградская область', 'Мурманская область', 'Псковская область', 'Новгородская область', 'Вологодская область', 'Калининградская область', 'Архангельская область', 'Республика Карелия', 'Республика Коми', 'Ненецкий автономный округ', 'РОССИЯ / СИБИРСКИЙ ФЕДЕРАЛЬНЫЙ ОКРУГ:', 'Новосибирская область', 'Красноярский край', 'Иркутская область', 'Томская область', 'Кемеровская область', 'Омская область', 'Читинская область', 'Агинский Бурятский автономный округ', 'Усть-Ордынский Бурятский автономный округ', 'Республика Бурятия', 'Республика Алтай', 'Республика Хакасия', 'Алтайский край', 'Таймырский (Долгано-Ненецкий) автономный округ', 'Эвенкийский автономный округ', 'Республика Тыва', 'РОССИЯ / УРАЛЬСКИЙ ФЕДЕРАЛЬНЫЙ ОКРУГ:', 'Свердловская область', 'Челябинская область', 'Курганская область', 'Тюменская область', 'Ханты-Мансийский автономный округ', 'Ямало-Ненецкий автономный округ', 'РОССИЯ / ДАЛЬНЕВОСТОЧНЫЙ ФЕДЕРАЛЬНЫЙ ОКРУГ:', 'Хабаровский край', 'Приморский край (Владивосток)', 'Амурская область', 'Магаданская область', 'Чукотский автономный округ', 'Еврейская автономная область', 'Республика Саха (Якутия)', 'Камчатская область', 'Сахалинская область', 'Корякский автономный округ', 'РОССИЯ / ПРИВОЛЖСКИЙ ФЕДЕРАЛЬНЫЙ ОКРУГ:', 'Нижегородская область', 'Самарская область', 'Саратовская область', 'Пермская область', 'Республика Татарстан', 'Ульяновская область', 'Кировская область', 'Оренбургская область', 'Пензенская область', 'Удмуртская Республика', 'Республика Башкортостан', 'Коми-Пермяцкий автономный округ', 'Республика Марий Эл', 'Республика Мордовия', 'Чувашская Республика', 'РОССИЯ / ЮЖНЫЙ ФЕДЕРАЛЬНЫЙ ОКРУГ:', 'Ростовская область', 'Краснодарский край', 'Ставропольский край', 'Волгоградская область', 'Астраханская область', 'Республика Адыгея', 'Кабардино-Балкарская Республика', 'Республика Северная Осетия-Алания', 'Республика Калмыкия', 'Республика Дагестан', 'Карачаево-Черкесская Республика', 'Чеченская Республика', 'Республика Ингушетия', 'СТРАНЫ СНГ:', 'Азербайджан', 'Армения', 'Беларусь', 'Грузия', 'Казахстан', 'Кыргызстан', 'Молдова', 'Таджикистан', 'Туркменистан', 'Узбекистан', 'Украина', 'СТРАНЫ БАЛТИИ:', 'Литва', 'Латвия', 'Эстония', 'ОСТАЛЬНОЙ МИР:', 'США', 'Израиль', 'Германия', 'Канада', 'Великобритания', 'Австралия', 'Швеция', 'Люксембург', 'Франция', 'Италия', 'Нидерланды', 'Япония', 'Болгария', 'Китай', 'Финляндия', 'Испания', 'Польша', 'Чешская Республика', 'Турция', 'Бельгия', 'Австрия', 'Кипр', 'Бразилия', 'Швейцария', 'Саудовская Аравия', 'Объединенные Арабские Эмираты (ОАЭ)', 'Норвегия', 'Южная Корея', 'Прочие страны'];
+var subscriberu_country_code = ['', 'RU77', 'RU50', 'RU71', 'RU69', 'RU40', 'RU76', 'RU62', 'RU37', 'RU36', 'RU31', 'RU44', 'RU67', 'RU32', 'RU46', 'RU68', 'RU33', 'RU48', 'RU57', '', 'RU78', 'RU47', 'RU51', 'RU60', 'RU53', 'RU35', 'RU39', 'RU29', 'RU10', 'RU11', 'RU83', '', 'RU54', 'RU24', 'RU38', 'RU70', 'RU42', 'RU55', 'RU75', 'RU80', 'RU85', 'RU03', 'RU04', 'RU19', 'RU22', 'RU84', 'RU88', 'RU17', '', 'RU66', 'RU74', 'RU45', 'RU72', 'RU86', 'RU89', '', 'RU27', 'RU25', 'RU28', 'RU49', 'RU87', 'RU79', 'RU14', 'RU41', 'RU65', 'RU82', '', 'RU52', 'RU63', 'RU64', 'RU59', 'RU16', 'RU73', 'RU43', 'RU56', 'RU58', 'RU18', 'RU02', 'RU81', 'RU12', 'RU13', 'RU21', '', 'RU61', 'RU23', 'RU26', 'RU34', 'RU30', 'RU01', 'RU07', 'RU15', 'RU08', 'RU05', 'RU09', 'RU20', 'RU06', '', 'AZ,,', 'AM,,', 'BY,,', 'GE,,', 'KZ,,', 'KG,,', 'MD,,', 'TJ,,', 'TM,,', 'UZ,,', 'UA,,', '', 'LT,,', 'LV,,', 'EE,,', '', 'US,,', 'IL,,', 'DE,,', 'CA,,', 'UK,,', 'AU,,', 'SE,,', 'LU,,', 'FR,,', 'IT,,', 'NL,,', 'JP,,', 'BG,,', 'CN,,', 'FI,,', 'ES,,', 'PL,,', 'CZ,,', 'TR,,', 'BE,,', 'AT,,', 'CY,,', 'BR,,', 'CH,,', 'SA,,', 'AE,,', 'NO,,', 'KR,,', ',,WW'];
+</script>
+
+
+
+
+<title>
+            Школа Своего Дела (economics.school.moroz) : Рассылка : Subscribe.Ru
+                </title>
+
+
+    <meta name="keywords" content="Школа своего Дела Юрий Мороз бизнес а не работа Творчество Создание Гений Проблема ШСД Не поиск работы создание написание рефератов реальное Дело менеджмент управление Институт Юрия Мороза ИЮМ Команда Командные соревнования">
+    <meta name="author" content="morozshsd@yandex.ru Автор Юрий Леонидович Мороз">
+    <meta name="description" content=" ШКОЛА СВОЕГО ДЕЛА Юрия Мороза www.SHSD.ru Рассылка &quot;Школа Своего Дела&quot; (общий тираж на 3-х серверах: более 1.000.000 читателей ) SMS-благодарность : Отправьте на номер 1151 SMS-сообщение: 5487. Цена $0.99 без НДС. Только по России. Выразить благодарность кратную 10000 руб. (И SMS-благодарность для других стран) Дистанционный Курс &quot;ШСД&quot; Поступить в ШСД - отправьте письмо на dk-shsd@znanium.ru , указав в теме или тексте письма слово &quot;SHSD&quot; Семинары Школы Своего Дела Невнимательность и при...">
+            <meta property="og:image" content="https://subscribe.ru/img/new/imgpsh_fullsize.png"/>
+    
+
+            <link rel="alternate" type="application/atom+xml"
+              title="Выпуски &quot;Новый проект Юрия Мороза&quot; (Atom)"
+              href="https://subscribe.ru/archive/economics.school.moroz/index.atom" />
+        <link rel="alternate" type="application/atom+xml"
+              title="Выпуски &quot;Новый проект Юрия Мороза&quot; (RSS)"
+              href="https://subscribe.ru/archive/economics.school.moroz/index.rss" />
+    
+
+
+
+</head>
+
+<body>
+
+<!-- FELIS obj=#include name=include/loginform.html -->
+
+<div id="all"> <!-- catalog/pre -->
+    <div class="header-spacer"></div>
+
+    <div class="noPhones top_adv pcs">
+        <div style="text-align:center;">
+            <div id="yandex_ad" style="display: inline-block;">
+            </div>
+    </div>
+    </div>
+
+
+
+
+<!--FELIS obj=#include name=include/misccache/iprjlastnews/index-->
+
+<header class="noauth">
+  <a href="#" class="menu_link"></a>
+  <a title="Subscribe.Ru" href="/" class="logo logo-red "></a>
+<a class="sendsay-block" href="https://sendsay.ru/?utm_source=subscribe-toplogo&amp;utm_medium=subswebsite&amp;utm_campaign=subscribe-toplogo" target="_blank">Отправляет email-рассылки с&nbsp;помощью сервиса <u>Sendsay</u></a>
+ 
+    <div class="topmenu_wrap">
+        <div class="topmenu_wrap-inner">
+            <ul class="topmenu">
+
+                
+                <li class="topmenu_item">
+                    <span class="topmenu_link-wrap">
+                        <a class="topmenu_link" href="/digest">
+                        Выпуски<span class="topmenu_info topmenu_info-1"></span></a>
+
+                    </span>
+                </li>
+                <li class="topmenu_item">
+                    <span class="topmenu_link-wrap">
+                        <a class="topmenu_link" href="/group/">
+                        Группы<span class="topmenu_info topmenu_info-2"><!--group=9.738--></span></a>
+
+                    </span>
+                </li>
+                <li class="topmenu_item">
+                    <span class="topmenu_link-wrap">
+                        <a class="topmenu_link" href="/member/lenta">
+                        Подборки<span class="topmenu_info topmenu_info-3"></span> </a>
+
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+  <ul class="usermenu">
+       <!-- 
+                      -->
+
+                                                  <li class="usermenu_item">
+          <a href="/member/join" class="usermenu_link usermenu_link-1" onclick="showloginForm(0,'/archive/economics.school.moroz/200901/09120257.html'); return false" title="Вход\Регистрация"></a>
+      </li>
+  
+      <li class="usermenu_item"><a href="" class="usermenu_link usermenu_link-2"></a></li>
+  </ul>
+
+  <div class="scroll_up toTop">
+      <a class="scroll_up-inner" href="" id="scrollup"></a>
+  </div>
+
+
+
+    <div class="search">
+        <form action="/search/" method="post">
+            <div class="search-input">
+                <input name="q" type="text"  value="Поиск" onfocus="if (this.value == 'Поиск') {this.value = '';}" onblur="this.value=!this.value?'Поиск':this.value;" />
+            </div>
+            <input name="where" value="subs" type="hidden">            <input name="charset" value="кошка" type="hidden">
+            <input type="submit" value="Найти" class="search-submit button button-red" />
+            <span class="search-clear"></span>
+        </form>
+    </div>
+
+
+        
+
+
+
+
+</header>
+
+<div class="up noPhones"></div>
+
+
+
+            
+                            
+
+         <!--add left column -->
+
+    
+<div class="leftmenu noPhones">
+    <a href="#" class="leftmenu_arrows"></a>
+        <ul class="leftmenu_ul">
+
+                                          <li class="leftmenu_item"><a class="leftmenu_link" href="/archive/" title="Все вместе">
+                            <span class="leftmenu_icon leftmenu_icon-0">&nbsp;</span>
+                            <span class="leftmenu_title">Все вместе</span></a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/latest" title="Открыто недавно">
+              <span class="leftmenu_icon leftmenu_icon-latest"></span>
+                            <span class="leftmenu_title">
+                                                 Открыто недавно
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/auto" title="Автомобили">
+              <span class="leftmenu_icon leftmenu_icon-auto"></span>
+                            <span class="leftmenu_title">
+                                                 Автомобили
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/business" title="Бизнес и карьера">
+              <span class="leftmenu_icon leftmenu_icon-business"></span>
+                            <span class="leftmenu_title">
+                                                 Бизнес и карьера
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/home" title="Дом и семья">
+              <span class="leftmenu_icon leftmenu_icon-home"></span>
+                            <span class="leftmenu_title">
+                                                 Дом и семья
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/woman" title="Мир женщины">
+              <span class="leftmenu_icon leftmenu_icon-woman"></span>
+                            <span class="leftmenu_title">
+                                                 Мир женщины
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/hitech" title="Hi-Tech">
+              <span class="leftmenu_icon leftmenu_icon-hitech"></span>
+                            <span class="leftmenu_title">
+                                                 Hi-Tech
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/comp" title="Компьютеры и интернет">
+              <span class="leftmenu_icon leftmenu_icon-comp"></span>
+                            <span class="leftmenu_title">
+                                                 Компьютеры и интернет
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/culture" title="Культура, стиль жизни">
+              <span class="leftmenu_icon leftmenu_icon-culture"></span>
+                            <span class="leftmenu_title">
+                                                 Культура, стиль жизни
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/media" title="Новости и СМИ">
+              <span class="leftmenu_icon leftmenu_icon-media"></span>
+                            <span class="leftmenu_title">
+                                                 Новости и СМИ
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/socio" title="Общество">
+              <span class="leftmenu_icon leftmenu_icon-socio"></span>
+                            <span class="leftmenu_title">
+                                                 Общество
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/weather" title="Прогноз погоды">
+              <span class="leftmenu_icon leftmenu_icon-weather"></span>
+                            <span class="leftmenu_title">
+                                                 Прогноз погоды
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/sport" title="Спорт">
+              <span class="leftmenu_icon leftmenu_icon-sport"></span>
+                            <span class="leftmenu_title">
+                                                 Спорт
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/country" title="Страны и регионы">
+              <span class="leftmenu_icon leftmenu_icon-country"></span>
+                            <span class="leftmenu_title">
+                                                 Страны и регионы
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/travel" title="Туризм">
+              <span class="leftmenu_icon leftmenu_icon-travel"></span>
+                            <span class="leftmenu_title">
+                                                 Туризм
+                                   </span>
+       </a>
+
+       <li class="leftmenu_item">
+              <a class="leftmenu_link" href="/archive/economics" title="Экономика и финансы">
+              <span class="leftmenu_icon leftmenu_icon-economics"></span>
+                            <span class="leftmenu_title">
+                                                 Экономика <span class="noPhones">и финансы</span>
+                                   </span>
+       </a>
+
+                                          <li class="leftmenu_item">
+    <a class="leftmenu_link leftmenu_link-33" href="https://sendsay.ru/?utm_source=subscribe-mainmenu&utm_medium=subswebsite&utm_campaign=subscribe-mainmenu" title="Email-маркетинг">
+    <span class="leftmenu_icon leftmenu_icon-33">&nbsp;</span>
+    <span class="leftmenu_title">Email-маркетинг</span></a></li>
+</li>
+</ul>
+</div>
+
+    <script type="text/javascript">
+        $(function () {
+            var href = $('.bread-red .bread_list a:first').attr('href'),
+                    menuItem = $('.leftmenu_link[href="'+href+'"]'),
+                    items = $('.leftmenu_link');
+            items.removeClass('leftmenu_link-active');
+            menuItem.addClass('leftmenu_link-active');
+        });
+    </script>
+
+
+
+
+<section class="maincontent">
+
+
+
+
+
+
+
+            <div class="bread bread-red noPhones"><div class="inside">
+    <ul class="bread_list"><a href="/archive/socio" target="_top">Общество</a> &rarr; <a href="/archive/socio/edu" target="_top">Образование</a> &rarr; <a href="/archive/socio/edu/business" target="_top">Школа бизнеса</a> &rarr; <a href="/archive/socio/edu/business/shsd" target="_top">Школа Своего Дела</a></ul>
+
+    </div></div>
+
+
+<div class="group-page"><div class="inside">
+    <div class="group_phoneGrey">
+        <h3 class="group_title">
+                                                <a href="/catalog/economics.school.moroz" id="name">Новый проект Юрия Мороза</a>
+        </h3>
+        <script type="text/javascript">
+            chsymb('#name');
+            chsymb('title');
+        </script>
+    </div>
+
+    <div class="layer-grid5 catalog-descr">
+        <div class="layer-left">
+            <div class="article_about">
+                <!--anketa-->
+                    
+                <!--/anketa-->
+
+
+                <div class="article_meta">
+                    <div class="article_userpic noTabletsPort noTabletsLand" id="artLogo_wrap">
+                        <a href="/catalog/economics.school.moroz"><img src="/catalog/economics.school.moroz/logo.png" alt="" class="article_pic" id="artLogo"/></a>
+                        <script type="text/javascript">
+                            window.onload = function() {
+                                var height = document.getElementById('artLogo').height;
+                                var width = document.getElementById('artLogo').width;
+                                if(width>2 && height>2) {
+                                    var meta =document.createElement('meta');
+                                    meta.content='https://subscribe.ru/catalog/economics.school.moroz/logo.png';
+                                    meta.setAttribute('property', 'og:image');
+                                    document.head.insertBefore(meta, document.head.childNodes[0]);
+                                } else {
+                                    document.getElementById('artLogo_wrap').style= "display:none;";
+                                    document.getElementById('artActions').style= "width:95%;text-align: center;";
+                                }
+                            }
+                        </script>
+                    </div>
+                    <div class="article_actions" id="artActions">
+                        <span class="article_line noTabletsPort noTabletsLand"></span>
+                        
+                                                                
+
+                                                        <a href="/member/quick?grp=economics.school.moroz"
+                               class="subscriberu_biglist subscriberu_subscribe subscriberu_notsubscribed subscriberu_unknown button button-red l1634" lid="l1634">Подписаться</a>
+                        
+                        <span class="article_line"></span>
+                                                    <b class="noTabletsPort noTabletsLand"><small>
+                                <!---->
+                                        &laquo;Серебряная&raquo; новостная рассылка
+                                                                        <!---->
+                            </small></b>
+                                                        <span class="article_line"></span>
+                            <span class="article_subers">Подписчиков <nobr class="article_subersCount">535.757</nobr></span>
+                                                <!--rss-->
+                                                                                                                                                                                                                                                <a href="/archive/economics.school.moroz/index.rss" class="rss red">RSS</a>
+                                                                                                                                                                                        <!--/rss-->
+                    </div>
+                </div>
+                <div class="article_info">
+
+                    <!--calendar-->
+                                        <div class="mod_calendar mod_calendar-border noPhones noTabletsPort noTabletsLand">
+                                                                                                <!-- 134 -->
+<span id="calendarblock_134">
+<table class="calendar">
+<tr>
+<td class="top" colspan="7">
+<a class="link" href="/archive/economics.school.moroz/2009.html" onclick="$('#calendarblock_134').load('/blog/economics.school.moroz/calendar/200901/-');return false">&larr;</a> 
+&nbsp;
+<a href="/archive/economics.school.moroz/2009.html">
+Январь
+2009
+</a>
+&nbsp;
+
+ <a class="link" href="/archive/economics.school.moroz/2009.html" onclick="$('#calendarblock_134').load('/blog/economics.school.moroz/calendar/200901/+');return false">&rarr;</a>
+
+</td>
+</tr>
+
+<tr align="center">
+
+
+
+<td colspan="3"></td>
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">&nbsp;1</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">&nbsp;2</div>
+
+
+</td>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">&nbsp;3</div>
+
+
+</th>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">&nbsp;4</div>
+
+
+</th>
+
+
+</tr><tr align="center">
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">&nbsp;5</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">&nbsp;6</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">&nbsp;7</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">&nbsp;8</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox"><a href="/archive/economics.school.moroz/200901/09120257.html">&nbsp;9</a></div>
+
+
+</td>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">10</div>
+
+
+</th>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">11</div>
+
+
+</th>
+
+
+</tr><tr align="center">
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">12</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">13</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">14</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">15</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">16</div>
+
+
+</td>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">17</div>
+
+
+</th>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">18</div>
+
+
+</th>
+
+
+</tr><tr align="center">
+
+
+<td>
+
+
+<div class="subscriberu_fbbox"><a href="/archive/economics.school.moroz/200901/19144234.html">19</a></div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">20</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">21</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">22</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox"><a href="/archive/economics.school.moroz/200901/23131205.html">23</a></div>
+
+
+</td>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">24</div>
+
+
+</th>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">25</div>
+
+
+</th>
+
+
+</tr><tr align="center">
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">26</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">27</div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox"><a href="/archive/economics.school.moroz/200901/28065722.html">28</a></div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox"><a href="/archive/economics.school.moroz/200901/29115511.html">29</a></div>
+
+
+</td>
+
+
+
+
+<td>
+
+
+<div class="subscriberu_fbbox">30</div>
+
+
+</td>
+
+
+
+
+<th>
+
+
+<div class="subscriberu_fbbox">31</div>
+
+
+</th>
+</tr>
+</table>
+</span>
+
+
+                        <div class="mod_calInfo">
+                                                                                                <p>
+                                                                                                                                                                                        <br/>За последние 60 дней                                                                                                                                                                                                                                                                                    <b> 22 выпусков (2-3 раза в неделю) </b>
+
+                                                                                                                                                                                                                            </p>
+
+                                    <p class="word-break">
+                                                                                                                                    <br/>Сайт рассылки:
+                                                                                                    <a href="http://www.shsd.ru" target="_blank">http://www.shsd.ru</a>
+                                                                                                                                    
+                                        
+                                                                                    <br/>Открыта:
+                                                                                27-12-2000
+
+                                                                                                                                                                                                                        
+
+                                        <!-- xz from what if???]-->
+                                        
+                                                                                                                                                                                                                                                                
+                                                                                                                                                                </p> <!--/gray-->
+                                                            
+                        </div>
+                    </div>
+                    <!--/calendar-->
+
+                    <!-- search -->
+                                            
+                            <form id="archsearch" class="archsearch" method="post" action="/search/">
+                                <input id="archsearchq" type="text" class="tbx empty" name="q" value="" />
+                                <input type="submit" class="button button-red" value="Найти" >
+                                <input type="hidden" name="charset" value="кошка">
+                                <input type="hidden" name="where" value="arch">
+                                <input type="hidden" name="new" value="1">
+                                <input type="hidden" name="filter" value="sub:economics.school.moroz">
+                                <input type="hidden" name="ext1" value="архиве рассылки &quot;Новый проект Юрия Мороза&quot;">
+                            </form>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#archsearch input[type=submit]').live('click', function (e) {
+                                e.preventDefault();
+                                var query = $(this).closest('form').find('input[name=q]').val();
+                                var curr_url = "economics.school.moroz";
+                                window.open("https://www.google.ru/search?q=" + encodeURI(query) + "&sitesearch=subscribe.ru/archive/" + curr_url + "/", "_blank");
+                            });
+                        });
+                    </script>
+                        
+                                                                <!--/search -->
+
+                    <div class="article_author">
+                                                    <span class="pre">Автор</span>
+                                                                                                    
+
+
+
+
+                
+<div class="subscriberu_fbbox">
+    <a href="/author/24658"
+class="subscriberu_titlesand subscriberu_avatar">
+            <span class="subscriberu_wrapImg">
+                                <img  width="25" height="25" class="lateload hidden group_miniPic" latesrc="https://mediasubs.ru/author/avatar/24658.png" src="https://subscribe.ru/img/johndoe_100x100.png" alt="" />            <noscript><img class="group_miniPic" width="25" height="25" src="https://mediasubs.ru/author/avatar/24658.png" alt=""/></noscript>                    </span></a>
+        <span class="subscriberu_wrapName">
+                <a href="/author/24658"
+           class="subscriberu_titlesand subscriberu_avatar">
+            Юрий Леонидович Мороз </a></span>
+    
+
+
+</div>
+
+                    </div>
+                    <div class="article_desc noTabletsPort noTabletsLand">
+                                                                                                 </div>
+
+                                                                        <!-- stat -->
+                            <h3 class="article_h3"><a href="/stat/economics.school.moroz">Статистика</a></h3>
+                            <div class="article_stat">
+                                <span class="article_statSubs red">535.757 подписчиков</span>
+                                <br>
+                                <span class="article_statGain">-315 за неделю</span>
+
+                                
+                                                            </div><!-- /stat -->
+                                            
+
+
+                            </div>
+            </div>
+            
+            <!--adv-->
+            <div class="noPhones noTabletsLand noTabletsPort adv">
+                                        <!--adv1-->
+                                        <!--adv2,3-->
+                                    
+
+            </div>
+
+        </div> <!--/layer-left-->
+
+        <div class="catmenu phones"><div class="inside">
+            <ul class="catmenu_ul">
+                <li class="catmenu_item"><a href="/catalog/economics.school.moroz" class="catmenu_link catmenu_link-active">Выпуски</a></li>
+                <li class="catmenu_item"><a href="/stat/economics.school.moroz" class="catmenu_link">Статистика</a></li>
+
+                <li class="phones catmenu_grad"></li>
+                <li class="phones catmenu_grad2" style="display: none;"></li>
+            </ul>
+        </div></div>
+
+        <div class="layer-right">
+                        <!--archive-->
+                                <div class="archive-article_pages">
+    <a rel="nofollow" href="/archive/economics.school.moroz/nav/prev/20090109120257.html" class="archive-article_prev">&larr;</a>
+    &nbsp;
+    <a href="/archive/economics.school.moroz/" class="archive-article_alltopics">Все выпуски</a>
+    &nbsp;
+    <a rel="nofollow" href="/archive/economics.school.moroz/nav/next/20090109120257.html" class="archive-article_next">&rarr;</a>
+</div>
+
+<div class="group_content neoptin">
+    <div class="group_sends noLeftmenu">
+
+        
+        <span id="hypercontext">
+        <h2 class="bordo">Школа Своего Дела</h2>
+        <br/>
+        <style><--
+  
+--></style>        <!-- # include virtual="/skin/issue/pre.shtml"-->
+<table summary="" cellspacing="5" cellpadding="5" border="0" bgcolor="#ffffff" style="background-color: #ffffff; background-image: ;">
+<tr valign="top" align="left">
+<td bgcolor="#ffffff" style="padding: 5px; background-color: #ffffff; background-image: ; "><table bgcolor="#004080" align="center" cellspacing="1" cellpadding="5" class=" " border="0">
+<tbody>
+<tr>
+<td><font color="#ffffff" size="+1"><strong>ШКОЛА СВОЕГО ДЕЛА Юрия Мороза</strong></font><br />&nbsp;<a href="http://www.shsd.ru/"><font color="#ffffff" size="4">www.SHSD.ru&nbsp;</font></a>&nbsp;<br /></td>
+<td align="right">
+<div align="right"><strong><font color="#ffffff" size="+1">Рассылка&nbsp;&quot;Школа Своего Дела&quot;</font></strong> <br /><font color="#ffffff" size="+1">(общий тираж на 3-х серверах: более 1.000.000 читателей )</font>&nbsp;<br /></div>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#800000" colspan="2">
+<div align="center"><strong><font color="#ffffff"> <a href="http://shsd.ru/content/10842/"><font color="#ffffff" >
+SMS-благодарность</font></a>:
+Отправьте на номер 1151 SMS-сообщение: 5487. Цена $0.99 без НДС. Только по России.
+</font></strong></div>
+<BR>
+<div align="center"><strong><font color="#ffffff"> <a href="http://shsd.ru/content/10842/"><font color="#ffffff" >Выразить благодарность кратную 10000 руб. (И SMS-благодарность для других стран)</font></a></font></strong></div></td>
+</tr>
+
+
+<tr>
+<td bgcolor="#8080ff" align="center" width="50%"><a href="http://shsd.znanium.ru/register.php"><font color="#000000"><strong>Дистанционный Курс &quot;ШСД&quot;</strong></font></a>
+<br>Поступить в ШСД - отправьте письмо на <a href="mailto:dk-shsd@znanium.ru"><font color="#000000">dk-shsd@znanium.ru</font></a>, указав в теме или тексте письма слово "SHSD"</td>
+
+<td bgcolor="#8080ff" align="center" width="50%">
+<a href="http://shsd.ru/teach/adi/adirs/"><font color="#000000"><strong>Семинары Школы Своего Дела</strong></font></a>
+</td>
+</tr>
+<tr>
+<td bgcolor="#ebd2a5" colspan="2"><font color="#5a2e2e"><!-- issue_start -->
+  <p style="TEXT-ALIGN: center" align="center"><strong><span style="FONT-SIZE: 36pt; COLOR: #002060">Невнимательность и привычки.</span></strong></p>
+  <p style="TEXT-ALIGN: justify">&nbsp;</p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: #002060">Как проявляется невнимательность и стереотипы? Прочитайте вот это письмо ниже, (хорошее письмо), и постарайтесь заметить, где, в каком месте, автор письма Марина, поступила как ей ПРИВЫЧНО. И ПРИВЫЧНО не заметила (или интерпретировала привычным образом) мое задание. И в результате получила СОВСЕМ НЕ ТО!</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">Здравствуйте, Юрий Леонидович!</span></strong><strong><span style="FONT-WEIGHT: normal; COLOR: black"> </span><span style="COLOR: black">С Новым годом!</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">Послала 5 смс.</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">Накануне Нового года попала на Ваш сайт &ndash; такой вот мне подарок! </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">Начала знакомство с чтения некоторых статей и 3 последних Ваших рассылок. Успокоиться не могу до сих пор. Понимаю, это эмоции. </span><span style="COLOR: black">Надеюсь на то, что если письмо попадет в рассылку - будет кому-то польза.</span></strong><strong><span style="FONT-WEIGHT: normal; COLOR: black"> Как мне, когда я вот только поняла, что я в порядке, а не &laquo;с приветом, ну что поделать, раз такая родилась&raquo;, как привыкла
+думать о себе давным-давно. </span><span style="COLOR: black">&laquo;Белых ворон&raquo; - то, оказывается, тысячи во главе с Морозом. Ребята, спасибо просто за то, что вы есть на свете!</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">Понимаете</span><span style="COLOR: black">, в первый раз в жизни</span></strong><strong><span style="FONT-WEIGHT: normal; COLOR: black"> прочитала мысли, настолько совпадающие с моим ощущением жизни. <span>&nbsp;</span>Раньше мне не встречались такие люди, понимаете, никогда!</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">Всю жизнь так получается, <span>&nbsp;</span>что я частенько </span><span style="COLOR: black">невольно шокирую окружающих, в первую очередь близких, своими заявлениями:</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Будут дети - в садик-школу не отдам&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Не хочу рожать в роддоме, хочу в своем доме&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Хочу работать без начальников&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Работа должна быть любимой, это же идиотизм - мучиться целыми днями на нелюбимой работе (А когда это происходит годами? Жуть-какая-то!)</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Работать с утра до ночи &ndash; неправильно, это не предмет для гордости и не повод для уважения, все наоборот&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Надо так работать, чтобы меньше времени = больше денег&raquo;. </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">Знаете, что слышу в ответ?</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Ты ненормальная&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Так не бывает&raquo;, </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Зачем тебе это надо&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Так все живут&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Ты просто лентяйка, все нормальные люди работают, а ты&hellip;&raquo; </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">Плюс сразу начинаются страшилки что будет, если я это все-таки сделаю (часть этого я, кстати, сделала &ndash; страшилки не сработали, проверено :).</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">Вопросы мои типа</span></strong><strong><span style="FONT-WEIGHT: normal; COLOR: black">: </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Что это меняет в твоей жизни (разговор о ком-то, новости&hellip;)? Какое к тебе это имеет отношение? Тебе это что-то дает?&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Зачем я буду помогать людям, если они меня об этом не просят?&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Зачем жить вместе ради детей, когда всем от этого так хреново?&raquo; </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Зачем я буду делать людей инвалидами - делать за них то, что они могут сами?&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black"><span>&nbsp;</span>&laquo;Зачем ты меня спрашиваешь (советуешься), если я отвечаю и ты сразу с этим споришь?&raquo; </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Главная мысль твоего повествования?&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Что ты от меня хочешь? Конкретно?&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">вообще вызывают бурю эмоций. </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">В ответ получаю</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Нельзя быть такой категоричной (конкретной, нетерпимой, бескомпромиссной, максималисткой&hellip;)&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;С тобой невозможно разговаривать&raquo;</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">&laquo;Что ты начинаешь&raquo; (Суперфраза!)</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">Обвинения в равнодушии, хамстве, лени, нежелании помочь и т.д. </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="FONT-WEIGHT: normal; COLOR: black">В школе про меня говорили: &laquo;Где сядешь &ndash; там и слезешь&raquo;, много позже я поняла, что это плюс в мою копилку. Народ был в шоке, когда я увольнялась, меняла работы, бросила 2-е &laquo;образование&raquo; (естественно, платное, платила сама) после 1-й сессии, заявив, что ничему я и тут не научусь, ушла в прямые продажи строить свой бизнес...</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">К ЧЕМУ ЭТО Я ВСЕ? </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">Ребята, то, что внутри &ndash; ЭТО НАСТОЯЩЕЕ! Даже если все вокруг (даже самые родные) думают, чувствуют и делают по-другому! </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><u><span style="COLOR: black">Я ни о чем, что САМА решала и делала</span></u><span style="COLOR: black"> (а не безмозгло велась на кого-то, это было, веры в себя не хватало), <u>не пожалела.</u> Жалела только о том, что не сделала этого раньше.</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">Я в шоке. Я вернулась к тому, что я знала и чувствовала всегда! Оказалось, это все ПРАВДА! </span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">С уважением, Марина</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">Р.</span></strong><strong><span lang="EN-US" style="COLOR: black">S</span><span style="COLOR: black">. Про новогоднее письмо.</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">За 10 минут до Нового года я его написала</span></strong><span style="COLOR: black">. <strong>Очередной шок.</strong>&nbsp; </span><strong><span style="COLOR: black">Вот оно:</span></strong></p>
+  <p style="TEXT-ALIGN: justify"><span style="COLOR: black">&laquo;Я стала спокойной, уверенной в себе Женщиной, нежной, любящей и любимой. </span></p>
+  <p style="TEXT-ALIGN: justify"><span style="COLOR: black">Я чувствую себя Женщиной.</span></p>
+  <p style="TEXT-ALIGN: justify"><span style="COLOR: black">Я встретила и полюбила своего Мужчину. У нас прекрасная семья&raquo;.</span></p>
+  <p style="TEXT-ALIGN: justify"><span style="COLOR: black">Потом, 1-го я дописала и про то, какая я здоровая, богатая, успешная и т.д. Но первыми, а<span>&nbsp; </span>значит, главными, были именно эти 3 строчки </span></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">Знаете почему Вам это пишу?</span></strong><span style="COLOR: black"> Последние полгода я занималась работой и только работой, размышляла как увеличить доход, развиваться дальше и решить вопрос со своим жильем &ndash; жить отдельно от родных. Ни о каких мужчинах-женщинах даже мыслей не было. И <strong>когда рассылку читала,</strong> <strong>думала</strong>: &laquo;Вот напишу в письме как я доход увеличу да что куплю куда поеду да какой эффективной стану&raquo;.
+<strong>А когда писала, некогда думать было(!)- и получилось вот что.</strong> <span>&nbsp;</span></span></p>
+  <p style="TEXT-ALIGN: justify"><span style="COLOR: black">Мысли о работе разом улетучились, благо я сама себе начальник и каникулы пока. Полный раздрызг. И не хочется вообще ничего почему-то</span><span style="COLOR: black; FONT-FAMILY: Wingdings"><span>L</span></span><span style="COLOR: black">.</span></p>
+  <p style="TEXT-ALIGN: justify"><span style="COLOR: black">&hellip;<strong>Что дальше-то с этим всем делать? </strong></span></p>
+  <p style="TEXT-ALIGN: justify"><span style="COLOR: black">Вопрос бестолочи, но своих мыслей нет. В голове пока пусто.</span></p>
+  <p style="TEXT-ALIGN: justify"><strong><span style="COLOR: black">Марина.</span></strong></p>
+  <p><span style="COLOR: #002060">Вы, Марина, конечно, умная, но выполнили не то задание, которое я дал. А другое, более привычное.</span></p>
+  <p><span style="COLOR: #002060">То, о чем люди просят в церкви у бога или просят у Президентов или вообще у любых людей, которых считают авторитетами для себя.</span></p>
+  <p><span style="COLOR: #002060">Вы написали о том, <strong>ЧТО ВЫ ПОЛУЧИТЕ в будущем году</strong>.</span></p>
+  <p><span style="COLOR: #002060">Или другими словами о том, что вам кто-то <strong>ДАСТ.</strong></span></p>
+  <p><span style="COLOR: #002060">А я просил написать о том, что вы будете ДЕЛАТЬ. (Если станете всемогущей). Разницу понимаете?</span></p>
+  <p><span style="COLOR: #002060">В сотнях книжек и религий долдонят об одном и том же. Или просите и вам будет дано или представьте себе, что вы хотите и у вас это появится. </span></p>
+  <p><span style="COLOR: #002060">Но почему-то (почему?) не говорят о том, что нужно СДЕЛАТЬ, для того, чтобы получить то, что вы хотите.</span></p>
+  <p><strong><span style="COLOR: #002060">Тот, кто причина, тот делает.</span></strong><span style="COLOR: #002060"> Тот кто жертва &ndash; проситель. Он просит &ndash; <strong>ДАЙ.</strong></span></p>
+  <p><span style="COLOR: #002060">И обижается, что не дают.</span></p>
+  <p><span style="COLOR: red">Сделай, сделай, сделай, сделай, сделай, сделай, сделай &hellip;</span></p>
+  <p><strong><span style="COLOR: #002060">Юрий Мороз</span></strong></p>
+  <p><strong><span style="COLOR: #002060">P.S. И на каникулах многие, думаю, посмотрели Доктора Хауса. Жду ваших впечатлений. Если хотите, это учебное пособие ШСД. Хотите научиться тому, что умеет Хаус, приходите в ШСД. Кстати, то что выше написала Марина (весь список претензий) постоянно получает Хаус.</span></strong></p>
+  <p><strong><span style="COLOR: #002060">Юрий Мороз</span></strong></p>
+  <p><strong><span style="COLOR: #002060"></span></strong></p>
+ <!-- issue_end--></font></td>
+</tr>
+<tr>
+<td bgcolor="#800000" align="center"><font color="#ffffff"><strong><a href="http://www.shsd.ru/teach/adi/adirs/"><font color="#ffffff">РАСПИСАНИЕ&nbsp;СЕМИНАРОВ</font></a>&nbsp;</strong></font><br /></td>
+<td bgcolor="#800000" align="center">
+<font color="#990000"><strong><a href="http://shsd.znanium.ru/register.php"><font color="#ffffff"><strong>Дистанционный Курс &quot;ШСД&quot;</strong></a></strong></font></td>
+</tr>
+
+<tr>
+<td bgcolor="#6666ff" colspan="2" align="center">
+Для получения реквизитов на оплату Курса "Бизнес с Нуля" отправьте письмо на адрес: <a href="mailto:dk-shsd@znanium.ru"><font color="#000000">dk-shsd@znanium.ru</font></a>, указав в теме или тексте письма слово "SHSD"</a>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#6666ff" colspan="2" align="center">
+<a href="http://shsd.ru/content/subscribe_3482/"><font color="#000000"><strong>Архив рассылки "Школа Своего Дела"</strong></font></a>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#800000" colspan="2" align="center"><strong><font color="#ffffff" size="2">Вы можете свободно использовать тексты из нашей&nbsp;рассылки при обязательном указании ссылок на сайт <a href="http://www.shsd.ru/"><font color="#ffffff" size="2">www.SHSD.ru</font></a></font></strong></td>
+</tr>
+</tbody>
+</table>
+
+<!-- " ' --></td>
+<!-- # include virtual="/skin/issue/leftmenu.side.shtml"--></tr>
+</table>
+<!-- # include virtual="/skin/issue/post.shtml"-->
+
+
+
+        <x-base href="http://subscribe.ru/archive/economics.school.moroz/200901/09120257.html">
+        </span>
+
+        <div class="clear"></div>
+        <hr noshade color="#cccccc" size="1"/>
+
+        <table border=0><tr>
+         <td style="vertical-align: middle;">
+
+                                                                  <a rel="nofollow" href="/member/love?what=add&type=issue&content=economics.school.moroz,20090109120257" class="subscriberu_love subscriberu_unlove subscriberu_unknown article_bottomlike subscriberu_bookmark" id="b135" title="В избранное">
+    <span class="noPhones">В избранное</span></a>
+
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </td>
+         <td valign=top>
+            <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?34"></script>
+             <script type="text/javascript">
+             VK.init({apiId: 2641035, onlyWidgets: true});
+             </script>
+            <div id="vk_like"></div>
+             <script type="text/javascript">
+             VK.Widgets.Like("vk_like", {type: "button", verb: 1});
+             </script>
+        </td>
+        <td valign="top" class="noPhones">
+            <iframe src="http://www.facebook.com/plugins/like.php?href=http://subscribe.ru/archive/economics.school.moroz/200901/09120257.html&send=false&layout=button_count&width=450&show_faces=false&action=recommend&colorscheme=light&font=trebuchet+ms&height=21"
+         scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:140px; height:20px; background-color:#cad4e7; padding:em 0 0 .25em; border: solid 1px #9dacce;" allowTransparency="true"></iframe>
+        </td>
+        </tr>
+            <tr class="noComps noTabletsPort noTabletsLand"><td></td><td>
+                <iframe src="http://www.facebook.com/plugins/like.php?href=http://subscribe.ru/archive/economics.school.moroz/200901/09120257.html&send=false&layout=button_count&width=450&show_faces=false&action=recommend&colorscheme=light&font=trebuchet+ms&height=21"
+                        scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:140px; height:20px; background-color:#cad4e7; padding:em 0 0 .25em; border: solid 1px #9dacce;" allowTransparency="true"></iframe>
+            </td></tr>
+        </table>
+        <br>
+
+        
+        <!-- GiN hands -->
+        <script type="text/javascript" src="/js/blog/ajax_comment.js?20240220015929-72593-61767"></script>
+        <span id="comments">
+         <span id="xmlObj">
+          <span id="commentblock">
+          <script type="text/javascript">
+          $(document).ready(function()
+           {
+           var comment_href = '/blog/ajax/economics.school.moroz/20090109120257/?action=get_comments';
+           $("#commentblock").load(comment_href);
+           });
+          </script>
+          </span>
+         </span>
+        </span>
+        <!--/GiN hands -->
+
+                     </div> <!--/group-sends-->
+ </div>  <!--/group-content-->
+
+
+
+
+
+            <!--/archive -->
+            
+        </div>
+    </div> <!--/layer-grid5-->
+
+<!--</div></div> otherwise footer broken--> <!--group-page,inside-->
+
+
+<div class="noPhones noTabletsPort noTabletsLand">
+</div>
+
+
+<!-- не залогинен -->
+<link rel="stylesheet" type="text/css" href="/css/login_register_form/res.css"/> 
+<link rel="stylesheet" type="text/css" href="/css/login_register_form/style.css"/>
+<!--[if IE]><link rel="stylesheet" type="text/css" href="/css/login_register_form/ie.css"/><![endif]-->
+
+<form id="rform" autocomplete="off" method="POST" action="/member/join" target="_top">
+<input type="hidden" name="destination" value="">
+<input type="hidden" name="addgrp" id="addgrp" value="">
+<input type="hidden" name="openid" value="">
+<input type="hidden" name="agree" value="on">
+</form>
+
+<div id='js_tmpl'></div>
+
+<p style="display:none;">
+<textarea id="js_tmpl_login_register" rows="0" cols="0">
+
+
+{#template MAIN}
+<div id="loginForm" style="display:none;" class="subscriberu_popup">
+
+ <div class="popup_register">
+ {#include js_tmpl_auth_reg_tab} 
+  {#if $P.login_register_tab == 1}
+     <form class="authentication-form" method="post" action="/MEMBERLOGIN_authen_cred">
+	  <dl class="rg_block_options">
+	   <dt id="js_tap_panel_auth">
+        <h1>Войти на сайт</h1>
+	{*
+		 {#include js_tmpl_auth_reg_button}
+	*}
+		 {#include js_tmpl_auth_reg_action}
+        <hr class="logreg_line noPhones">
+        <div class="logreg_descr noPhones"><p>{#include js_tmpl_auth_reg_descr}  </p></div>
+        <div class="logreg_advice noPhones">
+            Если вы еще не с нами, то начните с <a href="#" onclick="rgNav('js_tab_reg');return false;" class="dashed" data-func="registr">регистрации</a>
+        </div>
+          <br><br>
+          <a class="dashed auth-enter" href="/manage/author/"><b>Вход для авторов</b></a>
+	   </dt>
+	  </dl>
+    </form>
+  {#/if}
+  {#if $P.login_register_tab == 2}
+	  <div class="rg_block_options">
+	   <div id="js_tap_panel_auth">
+        <h1>Регистрация</h1>
+        <div class="social_reg">
+            {* <div class="rg_description">{#include js_tmpl_soc_auth_reg_descr}</div> *}
+            {#include js_tmpl_auth_reg_soc}
+            <div class="rg_soc_auth_agree">{#include js_tmpl_auth_reg_agree}</div>
+        </div>
+		<div class="subscribe_reg">
+            {* <div class="rg_description"> #include js_tmpl_auth_reg_descr </div> *}
+		  {#include js_tmpl_auth_reg_action}
+		</div>
+
+	{*
+		 {#include js_tmpl_auth_reg_button}
+	*}
+           <div class="clr">&nbsp;</div>
+
+           <hr class="logreg_line noPhones">
+           <div class="logreg_descr noPhones">{#include js_tmpl_auth_reg_descr} {#include js_tmpl_soc_auth_reg_descr} </div>
+
+	   </div>
+	  </div>
+  {#/if}
+ </div>
+{*
+ <div class="gray_bg register_shadow"></div>
+*}
+
+</div>
+{#/template MAIN}
+
+{#template js_tmpl_auth_reg_tab}
+<ul class="rg_nav">
+ <li id="js_tab_auth" class="{#if $P.login_register_tab == 1} rg_active_nav {#/if} rg_first_nav"><a onclick="rgNav('js_tab_auth');return false;" href="">Вход на сайт</a></li>
+ <li id="js_tab_reg"  class="{#if $P.login_register_tab == 2} rg_active_nav {#/if}"><a onclick="rgNav('js_tab_reg');return false;" href="">Регистрация </a></li>
+</ul>
+<span onclick="hidebo();" class="rg_closed">&nbsp;</span>
+{#/template js_tmpl_auth_reg_tab}
+
+{#template js_tmpl_auth_reg_action}
+
+ {#if $P.login_register_tab == 1}
+	{#include js_tmpl_auth_reg_soc}
+ {#/if}
+<div class="rg_forms">
+ <input type="hidden" id="login_register_destination" value="{$P.login_register_destination}"/>
+ {#if $P.login_register_tab == 1}
+ <div class="rg_for_input">
+  <span class="rg_text_inner">E-mail или код подписчика</span>
+  <input id="credential_0" class="js_keydown_selector rg_input_text" data-js_submit="no" data-js_next_input_name="credential_1" name="" type="text" />
