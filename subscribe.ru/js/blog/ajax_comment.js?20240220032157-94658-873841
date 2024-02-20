@@ -1,0 +1,341 @@
+$(document).ready(function()
+ {
+ $('.subscriberu_answer').live("click", function() 
+  {
+  if (userinfo['authorized']==1)
+   {
+   $.cookie('Subscribe::Digest_commentid', $(this).attr('comment_id'), {expires: 7, path: '/'});
+   doR('','1');
+   }
+  });
+ return false;
+ });
+
+function comment_del(gid,post_id,id)
+ {//удаление комментария
+ var _action='del_comment';
+ var _href='/blog/ajax/'+gid+'/'+post_id+'/'+_comment_layer_id;
+ $("#add_comment_"+id).hide();
+ $("#deletelink_"+id).html(blog_msg_code['comment_deleted'] + ': <a href="" onclick="comment_un_del(\''+ gid+'\',\''+post_id+'\',\''+id+'\');return false;">' + blog_msg_code['cancel'] + '</a>');
+ $("#date_time_"+id).css('text-decoration', 'line-through'); 
+ $("#comment_item_"+id).children('.content').css('text-decoration', 'line-through'); 
+ $('#comment_item_'+id+' div.act a.subscriberu_bookmark').hide();
+ $('#comment_item_'+id+' div.act div.subscriberu_fbbox').hide();
+ $.post(_href, {'id':id, 'action' : _action, 'js' : 1}, function(data) { });
+ }
+
+function comment_un_del(gid,post_id,id)
+ {//восстановление комментария 
+ var _action='undel_comment';
+ var _href='/blog/ajax/'+gid+'/'+post_id+'/'+_comment_layer_id;
+ $("#add_comment_"+id).show();
+ $("#deletelink_"+id).html('<a href="" onclick="comment_del(\''+ gid+'\',\''+post_id+'\',\''+id+'\');return false;">' + blog_msg_code['delete'] + '</a>');
+ $("#date_time_"+id).css('text-decoration', 'none'); 
+ $("#comment_item_"+id).children('.content').css('text-decoration', 'none'); 
+ $('#comment_item_'+id+' div.act a.subscriberu_bookmark').show();
+ $('#comment_item_'+id+' div.act div.subscriberu_fbbox').show();
+ $.post(_href, {'id':id, 'action' : _action, 'js' : 1}, function(data) { });
+ }
+
+
+
+function show_comment_form(id)
+ {
+ if ($('#comment_form_' + id).css('display') == 'block')
+  {
+  $('#comment_form_'+id).hide();
+  }
+ else
+  {
+  $(".subscriberu_comment_form").hide();
+  $('#comment_form_'+id).html($('#comment_form_template').html())
+  $('.comment_form_parent','#comment_form_'+id).val(id)
+  var rnd = Math.random();
+  $('#comment_form_'+id).show();
+  }
+ }
+
+function _disable_element(element)
+ {
+ element.css('color', '#cccccc');
+ element.attr('disabled',true);
+ }
+
+function _enable_element(element)
+ {
+ element.css('color', '');
+ element.attr('disabled',false);
+ }
+
+function _get_input(input)
+ {
+ var out = {};
+ for (i in input) 
+  {
+  if (input[i].name && input[i].value)
+   {
+   out[input[i].name] = input[i].value
+   }
+  }
+ return out;
+ }
+
+$('.comment_form_button').live("click", function(event) 
+ {
+ if ( event.button != 0 )
+  {
+  return false;
+  }
+
+ var form_id=_get_form_id(this);
+
+ _disable_element( $('#comment_form_' + form_id + ' .comment_form_button') );
+ _disable_element( $('#comment_form_' + form_id + ' .comment_form_body') );
+
+ var currPreLoaderImg = $('#comment_form_' + form_id + ' .preloader_img');
+ currPreLoaderImg.show();
+
+
+ var fields =_get_input( $('#comment_form_'+form_id+ ' :input') );
+
+ fields["action"]='send_comment';
+ fields["user_type"]='current_user';
+ fields["js"]=1;
+
+ $.post(_href, fields , function(data)
+  {
+  _enable_element( $('#comment_form_' + form_id + ' .comment_form_body') );
+  _disable_element( $('#comment_form_' + form_id + ' .comment_form_button') );
+  currPreLoaderImg.hide();
+  if (data == 'wrong_captha')
+    {//error
+    var rnd = Math.random();
+    $('#comment_form_' + form_id + ' .comment_form_captha_id').val(rnd)
+    $('#comment_form_' + form_id + ' .comment_form_captha_img').attr('src','https://subscribe.ru/captha.gif?'+rnd)
+    $('#comment_form_' + form_id + ' .comment_form_error').html(blog_error_code[data])
+    }
+   else if (data == 'no_confirm_user')
+    {//error
+    $('#comment_form_' + form_id + ' .comment_form_error').html(blog_error_code[data])
+    }
+   else
+    {//ok
+    currPreLoaderImg.hide();
+    document.getElementById('commentblock').innerHTML=data;
+    var to = $(".new_comment").offset().top - 10;
+    $('html,input_body').animate({scrollTop: to}, "fast"); 
+    }	
+  });
+ return true;
+ });
+
+
+function get_comments_page(pos)
+ {
+ var currPreLoaderImg = $('#page_preloader_img');
+ currPreLoaderImg.show();
+ $.get(_href,{'action' : 'get_comments','pos':pos,'js' : 1}, function(data)
+  {
+  currPreLoaderImg.hide();
+  document.getElementById('commentblock').innerHTML=data; 
+  var to = $("#commentblock").offset().top;
+  $('html,body').animate({scrollTop: to}, "fast");
+  });
+ };
+
+function scroll_to (go_to_id)
+ {
+ var to = $('#' + go_to_id).offset().top;
+ $('html,body').animate({scrollTop: to-100}, "fast");
+ }
+
+
+function _get_form_id(input_form)
+ {
+ parentDiv = $(input_form).parent('p').parent('div');
+ return $('.comment_form_parent',parentDiv).val();
+ }
+
+var old_nick='';
+
+function _check_form_nick(input_form)
+ { 
+ var form_id=_get_form_id(input_form);
+ var nick = $('#comment_form_'+form_id+' .comment_form_nick').val();
+ if (nick != '')
+  {
+  nick = nick.replace(/^\s+|\s+$/g, '');
+  }
+
+ if ( nick != old_nick & nick !='')
+  { 
+  $.post('/member/profile/api',{'nick': nick, 'js':1 }, function(rez)
+   {
+   var error_label=$('#comment_form_'+form_id+' .comment_form_nick_label');
+   if ( rez == '1' ) 
+    {
+    error_label.html(blog_msg_code['nick_used'])
+    error_label.removeClass('green').addClass('red');
+    check_form_nick = 1;
+    }
+   else if( rez == '0' ) 
+    {
+    error_label.html(blog_msg_code['nick_free'])
+    error_label.removeClass('red').addClass('green');
+    check_form_nick = 0;
+    }
+   form_check(form_id,'_check_form_nick');
+   old_nick = nick;
+   });
+  }
+ else if ( nick != old_nick & nick=='' )
+  {//empty string
+  var error_label=$('#comment_form_'+form_id+' .comment_form_nick_label');
+  error_label.removeClass('green').removeClass('red');
+  error_label.html('');
+  old_nick = nick;
+  }
+ }
+
+
+function _check_form_captha(input_form)
+ {
+ var form_id=_get_form_id(input_form);
+ check_form_captha = check_inp($('#comment_form_'+form_id+' .comment_form_captha').val());
+ form_check(form_id,'_check_form_captha')
+ }
+
+function _check_form_body(input_form)
+ {
+ var form_id=_get_form_id(input_form);
+ check_form_body = check_inp($('#comment_form_'+form_id+' .comment_form_body').val());
+ form_check(form_id,'_check_form_body')
+ }
+
+function form_check(form_id,not_check)
+ {
+ if ($('#comment_form_' + form_id+' .comment_form_nick').length==0)
+  {
+  check_form_nick=0;
+  }
+ else
+  {
+  if (not_check =! '_check_form_nick')
+   {
+   check_form_nick= check_inp($('#comment_form_'+form_id+' .comment_form_nick').val());       
+   }
+  }
+ 
+ if ($('#comment_form_' + form_id+' .comment_form_captha').length==0)
+  {
+  check_form_captha=0;  
+  }
+ else
+  {
+  if (not_check =! '_check_form_captha')
+   {
+   check_form_captha = check_inp($('#comment_form_'+form_id+' .comment_form_captha').val());
+   }
+  } 
+
+ currButton = $('#comment_form_'+form_id+' .comment_form_button');
+ if (check_form_body || check_form_captha || check_form_nick )
+  {
+  currButton.css('color', '#E6B5BA');
+  currButton.attr('disabled',true);
+  }
+ else
+  {
+  currButton.css('color', '#ffffff');
+  currButton.attr('disabled',false);
+  }
+ }
+
+function check_inp(val)
+ {
+ if  (val == '') return 1;
+ val =  val.replace(/^\s+|\s+$/g, '');
+ if ( val == '' )
+  {
+  return 1;
+  }
+ else
+  {
+  return 0;
+  }
+ }
+
+
+function reload_check_rule()
+ {
+ var isCaptha    = $('#captha_input');
+ if (isCaptha.length) 
+  {
+  check_form_captha=1;
+  }
+ else
+  {
+  check_form_captha=0;
+  } 
+
+ var isComm      = $('#comment_input_body');
+ if (isComm.length)
+  {
+  check_form_comment=1;
+  }
+ else
+  {
+  check_form_comment=0;
+  }
+
+ var isNick      = $('#comment_input_nick');
+ if (isNick.length)
+  {
+  check_form_nick=1;
+  }
+ else
+  {
+  check_form_nick=0;
+  }
+
+ }
+
+/**
+ * находит количество комментариев в заголовке, и дописывает их к иконке под статьей
+ */
+function getCountComments(){
+   var cntcomm = $(".lightblue").contents().filter(function(){ return this.nodeType == 3;  }).text().trim().slice(1,-1);
+ if(!cntcomm) { cntcomm = $('#countComments').text();  }
+ var com =  document.getElementById('countComm');
+ var com1 =  document.getElementById('countComm1');
+ if(com1) { document.getElementById('countComm1').innerHTML=cntcomm+' '+prepareEndNouns(cntcomm,['комментарий', 'комментария', 'комментариев']);}
+ if(com) { document.getElementById('countComm').innerHTML=cntcomm; }
+}
+/**
+ * возвращает окончания существительных к переданному числу
+ * @author Vajen
+ * @param {number} number число
+ * @param {string[]} nouns существительные которые использовать: ['1 шт','2 шт', '5 шт']
+ * @returns {string}
+ */
+ function prepareEndNouns(number, nouns) {
+ number = Math.abs(number);
+ number %= 100;
+ var result = nouns[2];
+ if (!(number >= 5 && number <= 20)) {
+  number %= 10;
+  if (number == 1) {
+   result = nouns[0];
+  }
+  else {
+   if (number >= 2 && number <= 4) {
+    result = nouns[1];
+   }
+  }
+ }
+ return result;
+}
+
+window.onload = function() {
+ getCountComments();
+}
