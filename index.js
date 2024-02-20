@@ -5,7 +5,7 @@ const server = http.createServer((request, response) => {
   // You pass two more arguments for config and middleware
   // More details here: https://github.com/vercel/serve-handler#options
   return handler(request, response, {
-    "public": "./subscribe.ru",
+    public: "./subscribe.ru",
     headers: [
       {
         source: "**/*.html",
