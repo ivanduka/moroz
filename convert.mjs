@@ -13,6 +13,7 @@ let htmlFiles = await glob("**/*.html", { ignore: "node_modules/**" });
 // htmlFiles = htmlFiles.slice(0, 10);
 
 for (const htmlFile of htmlFiles) {
+  console.log(htmlFile);
   const fileFullPath = path.join(__dirname, htmlFile);
   const content = await fs.readFile(fileFullPath);
   const decoded = iconv.decode(content, "koi8-r");
