@@ -7277,12 +7277,6 @@ $(document).ready(function () {
             var ta = RegExp.$2;
             $("#" + p + "f_typeauthid").val(ta);
 
-            if (ta == "vkontakte") {
-                if (typeof VK == "undefined") {
-                    $.getScript("http://vkontakte.ru/js/api/openapi.js");
-                }
-            }
-
             if ($("#quickForm").is(":visible")) {
                 // если это форма быстрой подписки
 
